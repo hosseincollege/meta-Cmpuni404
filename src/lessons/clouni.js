@@ -1015,5 +1015,102 @@ export default [
       }
     ]
   },
+  
+  /* ============================================================
+     فصل ۷S — خلاصه کل درس رایانش ابری (کلیدواژه‌محور)
+     ============================================================ */
+  {
+    section: "فصل ۷S: خلاصه کل درس رایانش ابری",
+    topics: [
+
+      {
+        title: "1- انگیزه و پیدایش ابر",
+        content: "تعریف Cloud، سیستم توزیع‌شده، دیتاسنتر، صرفه اقتصادی",
+        subtopics: [
+          { title: "1-1 رایانش ابری", content: "Cloud Computing" },
+          { title: "1-2 انعطاف‌پذیری", content: "Scalability" },
+          { title: "1-3 دیوار توان", content: "Power Wall" },
+          { title: "1-4 چند‌هسته‌ای", content: "Multi-Core" },
+          { title: "1-5 سیستم توزیع‌شده", content: "Distributed System" },
+          { title: "1-6 مراکز داده", content: "Data Center" },
+          { title: "1-7 انگیزه اقتصادی", content: "Cost Reduction" }
+        ]
+      },
+
+      {
+        title: "2- محاسبات الاستیک",
+        content: "Elasticity، مجازی‌سازی، چندمستاجره، مدل‌های سرویس",
+        subtopics: [
+          { title: "2-1 Elastic Computing", content: "الاستیسیته" },
+          { title: "2-2 چندمستاجره", content: "Multi-Tenancy" },
+          { title: "2-3 کشش‌پذیری", content: "Auto Scaling" },
+          { title: "2-4 مجازی‌سازی", content: "Virtualization" },
+          { title: "2-5 IaaS", content: "Infrastructure Service" },
+          { title: "2-6 PaaS", content: "Platform Service" },
+          { title: "2-7 SaaS", content: "Software Service" },
+          { title: "2-8 DaaS", content: "Desktop Service" }
+        ]
+      },
+
+      {
+        title: "3- انواع ابر و ارائه‌دهندگان",
+        content: "Private، Public، Hybrid، Multi-Cloud، Vendor Lock-in",
+        subtopics: [
+          { title: "3-1 ابر خصوصی", content: "Private Cloud" },
+          { title: "3-2 ابر عمومی", content: "Public Cloud" },
+          { title: "3-3 ابر ترکیبی", content: "Hybrid Cloud" },
+          { title: "3-4 چندابری", content: "Multi Cloud" },
+          { title: "3-5 قفل ارائه‌دهنده", content: "Vendor Lock-in" },
+          { title: "3-6 هایپراسکیلر", content: "Hyperscaler" },
+          { title: "3-7 AWS / Azure / GCP", content: "Cloud Providers" }
+        ]
+      },
+
+      {
+        title: "4- زیرساخت مرکز داده",
+        content: "Rack، Pod، Cooling، Power Density، Automation",
+        subtopics: [
+          { title: "4-1 زیرساخت مرکز داده", content: "Infrastructure" },
+          { title: "4-2 رک و راهرو", content: "Rack & Aisle" },
+          { title: "4-3 پاد", content: "Pod Design" },
+          { title: "4-4 چگالی توان", content: "Power Density" },
+          { title: "4-5 خنک‌سازی", content: "Cooling System" },
+          { title: "4-6 مرکز داده چراغ‌خاموش", content: "Lights-Out DC" }
+        ]
+      },
+
+      {
+        title: "5- مجازی‌سازی و مهاجرت",
+        content: "VM، Hypervisor، Docker، Kubernetes، Cloud Migration",
+        subtopics: [
+          { title: "5-1 مجازی‌سازی", content: "Virtualization" },
+          { title: "5-2 VM", content: "Virtual Machine" },
+          { title: "5-3 هایپروایزر", content: "Hypervisor" },
+          { title: "5-4 مهاجرت ابری", content: "Cloud Migration" },
+          { title: "5-5 استراتژی 6R", content: "Migration Strategies" },
+          { title: "5-6 کانتینر", content: "Container" },
+          { title: "5-7 Docker", content: "Container Engine" },
+          { title: "5-8 Kubernetes", content: "Orchestration" }
+        ]
+      },
+
+      {
+        title: "6- مفاهیم و مدل‌های ابری",
+        content: "PAYG، Security، Fault Tolerance، DR، CAPEX/OPEX",
+        subtopics: [
+          { title: "6-1 مدل اجاره‌ای", content: "Rental Model" },
+          { title: "6-2 On-Premises", content: "Traditional IT" },
+          { title: "6-3 PAYG", content: "Pay As You Go" },
+          { title: "6-4 مقیاس‌پذیری", content: "Vertical & Horizontal" },
+          { title: "6-5 امنیت", content: "Cloud Security" },
+          { title: "6-6 تحمل خطا", content: "Fault Tolerance" },
+          { title: "6-7 بازیابی فاجعه", content: "Disaster Recovery" },
+          { title: "6-8 CAPEX vs OPEX", content: "Cost Model" },
+          { title: "6-9 IaaS / PaaS / SaaS", content: "Service Models" }
+        ]
+      }
+
+    ]
+  }
 
 ];

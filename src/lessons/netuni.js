@@ -464,6 +464,135 @@ export default [
         ]
       }
     ]
+  },
+
+  /* ============================================================
+     بخش ۱۱S — خلاصه کل درس شبکه
+  ============================================================ */
+  {
+    section: "بخش ۱۱S: خلاصه کل درس شبکه",
+    topics: [
+
+      {
+        title: "1- مبانی شبکه و TCP/IP",
+        content: "TCP/IP، MAC Address، IP Address، لایه ۲ و ۳",
+        subtopics: [
+          { title: "1-1 Data Link Layer", content: "MAC Address 48-bit" },
+          { title: "1-2 Network Layer", content: "IP Routing" },
+          { title: "1-3 IPv4 Overview", content: "32-bit Address" },
+          { title: "1-4 NetID / HostID", content: "Subnet Mask Boundary" }
+        ]
+      },
+
+      {
+        title: "2- آدرس‌دهی کلاسیک (Classful)",
+        content: "Class A,B,C، Mask پیش‌فرض، هدررفت IP",
+        subtopics: [
+          { title: "2-1 Class A", content: "/8، شبکه‌های عظیم" },
+          { title: "2-2 Class B", content: "/16، شبکه‌های متوسط" },
+          { title: "2-3 Class C", content: "/24، شبکه‌های کوچک" },
+          { title: "2-4 Class D", content: "Multicast" },
+          { title: "2-5 Class E", content: "Reserved" },
+          { title: "2-6 Classful Problem", content: "IP Waste" }
+        ]
+      },
+
+      {
+        title: "3- CIDR و Subnetting",
+        content: "Classless، Prefix، Network/Host Bits",
+        subtopics: [
+          { title: "3-1 CIDR", content: "Flexible Addressing" },
+          { title: "3-2 Slash Notation", content: "/26، /24" },
+          { title: "3-3 Subnet Mask", content: "Network vs Host" },
+          { title: "3-4 Subnetting", content: "Divide Networks" },
+          { title: "3-5 Borrowing Bits", content: "More Subnets" }
+        ]
+      },
+
+      {
+        title: "4- انواع ارسال و آدرس‌های خاص",
+        content: "Unicast، Multicast، Broadcast، Special IP",
+        subtopics: [
+          { title: "4-1 Unicast", content: "One-to-One" },
+          { title: "4-2 Multicast", content: "One-to-Group" },
+          { title: "4-3 Broadcast", content: "One-to-All" },
+          { title: "4-4 Network Address", content: "All Host Bits 0" },
+          { title: "4-5 Broadcast Address", content: "All Host Bits 1" },
+          { title: "4-6 Loopback", content: "127.0.0.1" }
+        ]
+      },
+
+      {
+        title: "5- VLSM و Subnetting پیشرفته",
+        content: "VLSM، Subnet Example، Address Efficiency",
+        subtopics: [
+          { title: "5-1 Subnet Example", content: "/24 → /26" },
+          { title: "5-2 Fixed Length Issue", content: "Equal Subnets" },
+          { title: "5-3 VLSM", content: "Variable Length" },
+          { title: "5-4 Comparison", content: "Classful vs Classless" }
+        ]
+      },
+
+      {
+        title: "6- NAT و DHCP",
+        content: "Private/Public IP، NAT، PAT، DHCP",
+        subtopics: [
+          { title: "6-1 Private IP", content: "Internal Network" },
+          { title: "6-2 Public IP", content: "Internet Reachable" },
+          { title: "6-3 NAT", content: "Address Translation" },
+          { title: "6-4 PAT", content: "Port Based NAT" },
+          { title: "6-5 DHCP", content: "Auto Configuration" }
+        ]
+      },
+
+      {
+        title: "7- VLAN و Trunking",
+        content: "VLAN، Broadcast Domain، Trunk Link",
+        subtopics: [
+          { title: "7-1 VLAN", content: "Logical Segmentation" },
+          { title: "7-2 VLAN Benefits", content: "Security, Management" },
+          { title: "7-3 Trunk", content: "Multiple VLAN Traffic" },
+          { title: "7-4 Tagging", content: "VLAN Identification" }
+        ]
+      },
+
+      {
+        title: "8- آدرس‌دهی IPv6",
+        content: "128-bit، Hexadecimal، Compression، /64",
+        subtopics: [
+          { title: "8-1 IPv6 Motivation", content: "IPv4 Exhaustion" },
+          { title: "8-2 Address Format", content: "8 Hex Blocks" },
+          { title: "8-3 Zero Compression", content: ":: Rule" },
+          { title: "8-4 IPv6 Subnetting", content: "/64 Prefix" }
+        ]
+      },
+
+      {
+        title: "9- سیستم‌های خودگردان و دامنه مسیریابی",
+        content: "AS، ASN، Intra-Domain، Inter-Domain",
+        subtopics: [
+          { title: "9-1 Autonomous System", content: "Single Authority" },
+          { title: "9-2 ASN", content: "Unique Identifier" },
+          { title: "9-3 IGP", content: "Internal Routing" },
+          { title: "9-4 EGP", content: "Between ASes" }
+        ]
+      },
+
+      {
+        title: "10- پروتکل‌های مسیریابی",
+        content: "RIP، OSPF، BGP، Metric، Policy",
+        subtopics: [
+          { title: "10-1 RIP", content: "Distance Vector" },
+          { title: "10-2 RIP Metric", content: "Hop Count" },
+          { title: "10-3 OSPF", content: "Link State, Dijkstra" },
+          { title: "10-4 OSPF Metric", content: "Cost, Bandwidth" },
+          { title: "10-5 Areas", content: "Area 0 Backbone" },
+          { title: "10-6 BGP", content: "Inter-Domain Routing" },
+          { title: "10-7 BGP Type", content: "Path Vector, Policy-Based" }
+        ]
+      }
+
+    ]
   }
 
 ];

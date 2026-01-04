@@ -546,6 +546,143 @@ export default [
         ]
       }
     ]
+  },
+
+  /* ============================================================
+    فصل ۱۲S — خلاصه کل درس اینترنت اشیاء
+  ============================================================ */
+  {
+    section: "فصل ۱۲S: خلاصه کل درس اینترنت اشیاء",
+    topics: [
+
+      {
+        title: "1- مقدمه و تاریخچه IoT",
+        content: "IoT، اشیاء هوشمند، دستگاه متصل، رشد جهانی",
+        subtopics: [
+          { title: "1-1 Internet of Things", content: "Connected Devices" },
+          { title: "1-2 Smart Objects", content: "تصمیم‌گیری هوشمند" },
+          { title: "1-3 History of IoT", content: "ARPANET، IoT اولیه" },
+          { title: "1-4 Global Growth", content: "Smartphone، Cloud" }
+        ]
+      },
+
+      {
+        title: "2- اصطلاحات پایه IoT",
+        content: "Thing، Sensor، Actuator، Edge Computing",
+        subtopics: [
+          { title: "2-1 Things", content: "اشیاء فیزیکی متصل" },
+          { title: "2-2 Sensor", content: "Transducer، اندازه‌گیری" },
+          { title: "2-3 Actuator", content: "عمل فیزیکی کنترلی" },
+          { title: "2-4 Edge Computing", content: "کاهش تأخیر، پردازش محلی" }
+        ]
+      },
+
+      {
+        title: "3- معماری IoT",
+        content: "Three-Layer، Four-Layer، Five-Layer Architecture",
+        subtopics: [
+          { title: "3-1 Perception Layer", content: "Sensors، RFID" },
+          { title: "3-2 Network Layer", content: "انتقال داده" },
+          { title: "3-3 Application Layer", content: "خدمات کاربر" },
+          { title: "3-4 Support Layer", content: "Cloud، Edge" },
+          { title: "3-5 Middleware Layer", content: "پردازش، ذخیره" },
+          { title: "3-6 Business Layer", content: "تحلیل و تصمیم‌سازی" }
+        ]
+      },
+
+      {
+        title: "4- کاربردهای IoT",
+        content: "Smart City، IIoT، Healthcare، Agriculture",
+        subtopics: [
+          { title: "4-1 Smart Cities", content: "Traffic، Energy" },
+          { title: "4-2 Industrial IoT", content: "Smart Factory" },
+          { title: "4-3 Healthcare", content: "Remote Monitoring" },
+          { title: "4-4 Agriculture", content: "Smart Farming" }
+        ]
+      },
+
+      {
+        title: "5- اینترنت اشیاء در کسب‌وکار",
+        content: "Business Value، Automation، Remote Monitoring",
+        subtopics: [
+          { title: "5-1 Business Benefits", content: "Cost، Productivity" },
+          { title: "5-2 Smart Factories", content: "Industrial Automation" },
+          { title: "5-3 Remote Work", content: "Data Analysis" }
+        ]
+      },
+
+      {
+        title: "6- مزایای اینترنت اشیاء",
+        content: "Efficiency، Cost Saving، Predictive Maintenance",
+        subtopics: [
+          { title: "6-1 Increased Efficiency", content: "Process Automation" },
+          { title: "6-2 Cost Saving", content: "Resource Optimization" },
+          { title: "6-3 Predictive Maintenance", content: "Failure Prediction" }
+        ]
+      },
+
+      {
+        title: "7- چالش‌های IoT",
+        content: "Security، Privacy، Interoperability، Scalability، Cost",
+        subtopics: [
+          { title: "7-1 Security Risks", content: "Cyber Attacks" },
+          { title: "7-2 Data Privacy", content: "Privacy Protection" },
+          { title: "7-3 Interoperability", content: "Standardization" },
+          { title: "7-4 Scalability", content: "Large-Scale Systems" },
+          { title: "7-5 Connectivity & Power", content: "Energy Consumption" },
+          { title: "7-6 Cost", content: "Hardware، Maintenance" }
+        ]
+      },
+
+      {
+        title: "8- بردهای اینترنت اشیاء",
+        content: "Microcontroller، Microprocessor، Arduino، Raspberry Pi",
+        subtopics: [
+          { title: "8-1 IoT Boards", content: "Embedded Hardware" },
+          { title: "8-2 Microcontroller Boards", content: "Low Power" },
+          { title: "8-3 Microprocessor Boards", content: "Operating System" },
+          { title: "8-4 Arduino", content: "Open Source" },
+          { title: "8-5 Raspberry Pi", content: "Single Board Computer" },
+          { title: "8-6 NodeMCU", content: "ESP8266 Wi-Fi" }
+        ]
+      },
+
+      {
+        title: "9- پروتکل‌های IoT",
+        content: "MQTT، AMQP، DDS، Wi-Fi، LoRaWAN",
+        subtopics: [
+          { title: "9-1 MQTT", content: "Publish/Subscribe" },
+          { title: "9-2 AMQP", content: "Queue-Based" },
+          { title: "9-3 DDS", content: "Real-Time Systems" },
+          { title: "9-4 Short Range", content: "Wi-Fi، BLE، ZigBee" },
+          { title: "9-5 Long Range", content: "LoRaWAN، NB-IoT" }
+        ]
+      },
+
+      {
+        title: "10- مدل‌های تحویل داده",
+        content: "Unicast، Broadcast، Multicast، Anycast",
+        subtopics: [
+          { title: "10-1 Unicast", content: "One-to-One" },
+          { title: "10-2 Broadcast", content: "One-to-All" },
+          { title: "10-3 Multicast", content: "Group Communication" },
+          { title: "10-4 Anycast", content: "Nearest Node" }
+        ]
+      },
+
+      {
+        title: "11- امنیت اینترنت اشیاء",
+        content: "Authentication، Encryption، TLS، Privacy Regulations",
+        subtopics: [
+          { title: "11-1 IoT Security Importance", content: "Sensitive Data" },
+          { title: "11-2 Security Components", content: "Auth، Encryption" },
+          { title: "11-3 Secure Communication", content: "HTTPS، MQTT TLS" },
+          { title: "11-4 Data Privacy Laws", content: "GDPR، HIPAA" },
+          { title: "11-5 Best Practices", content: "Audit، Strong Encryption" }
+        ]
+      }
+
+    ]
   }
 
 ];
