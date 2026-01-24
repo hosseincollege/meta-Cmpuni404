@@ -174,7 +174,7 @@ function TopicTooltip({ topic, position, onClose }) {
   );
 }
 
-export default function LessonRoom({ lesson, onBack }) {
+export default function LessonRoom({ lesson, onBack, on2D }) {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [targetPosition, setTargetPosition] = useState([0, 0, 0]);
   const [mode, setMode] = useState("random");
@@ -361,6 +361,23 @@ export default function LessonRoom({ lesson, onBack }) {
                 <polyline points="2 17 12 22 22 17"></polyline>
                 <polyline points="2 12 12 17 22 12"></polyline>
              </svg>
+          </button>
+
+
+          {/* جداکننده */}
+          <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.2)", margin: "0 4px" }} />
+
+          {/* دکمه جدید: رفتن به صفحه 2D */}
+          <button
+            onClick={on2D}
+            title="نمای دو بعدی (صفحه جداگانه)"
+            style={iconButtonStyle(true, "#a78bfa")}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
           </button>
         </div>
       </div>

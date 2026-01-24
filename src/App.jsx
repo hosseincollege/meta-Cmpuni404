@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import LessonRoom from "./components/LessonRoom";
 import ClassroomSplitTwoD from "./components/ClassroomSplitTwoD";
-
 // --- وارد کردن دروس ---
 import python from "./lessons/python";
 import networks from "./lessons/networks";
@@ -17,8 +16,7 @@ import iotuni from "./lessons/iotuni";
 import clouni from "./lessons/clouni";
 import ciruni from "./lessons/ciruni";
 import pytam from "./lessons/pytam";
-
-// --- تابع نرمال‌سازی (از فایل‌های شما) ---
+// --- تابع نرمال‌سازی ---
 function normalizeLesson(raw, name) {
   if (Array.isArray(raw)) {
     return {
@@ -39,7 +37,6 @@ function normalizeLesson(raw, name) {
         name === "ciruni" ? "#e6b800" :
         name === "pytam" ? "#0961c0" :
         "#ffffff",
-
       chapters: raw.map((c, i) => ({
         id: "ch" + i,
         title: c.section || "Untitled",
@@ -54,7 +51,6 @@ function normalizeLesson(raw, name) {
   }
   return raw;
 }
-
 const LESSONS_DATA = {
   python: normalizeLesson(python, "Python"),
   networks: normalizeLesson(networks, "Networks"),
@@ -71,8 +67,7 @@ const LESSONS_DATA = {
   ciruni: normalizeLesson(ciruni, "ciruni"),
   pytam: normalizeLesson(pytam, "pytam"),
 };
-
-// --- استایل‌ها (ترکیب شده از فایل‌های قبلی) ---
+// --- استایل‌ها ---
 function getStyles() {
     return {
         container: {
@@ -127,6 +122,7 @@ function getStyles() {
             justifyContent: "center",
             cursor: "pointer",
             transition: "0.25s",
+            position: 'relative', // برای موقعیت‌دهی دکمه
         },
         icon: {
             width: "46px",
@@ -143,7 +139,6 @@ function getStyles() {
             marginTop: "10px",
             fontSize: "0.95rem",
         },
-        // استایل‌های اضافه شده برای دکمه 2D در صفحه اصلی
         optionsContainer: {
             display: 'flex',
             flexDirection: 'column',
@@ -151,28 +146,26 @@ function getStyles() {
             gap: '8px',
         },
         twoDButton: {
-            background: '#3b82f6', // آبی برای متمایز کردن
-            color: 'white',
-            border: 'none',
+            background: "rgba(30, 41, 59, 0.9)",
+            color: 'rgba(30, 41, 59, 0.9)',
+            border: "2px solid #4e5d7e",
             padding: '4px 10px',
-            borderRadius: '6px',
+            borderRadius: '0 0 0 11px', // گرد کردن گوشه پایین چپ برای هماهنگی با کارت
             fontSize: '0.75rem',
             cursor: 'pointer',
-            marginTop: '5px',
             fontWeight: 'bold',
+            position: 'absolute',
+            bottom: '0',       // چسبیدن به پایین
+            left: '0',         // چسبیدن به چپ
         }
     }
 }
-
-
 // --- کامپوننت رندر کننده کارت درس ---
 const LessonCard = ({ lesson, onSelect3D, onSelect2D }) => {
     const styles = getStyles();
-
     return (
         <div
             style={{ ...styles.card, borderColor: lesson.color }}
-            // 1. کلیک روی کارت پیش‌فرض 3D را فعال می‌کند
             onClick={() => onSelect3D(lesson)}
         >
             <div style={{ ...styles.icon, backgroundColor: lesson.color }}>
@@ -180,11 +173,10 @@ const LessonCard = ({ lesson, onSelect3D, onSelect2D }) => {
             </div>
             <h3 style={styles.cardTitle}>{lesson.title}</h3>
             
-            {/* 2. دکمه کوچک 2D در پایین کارت */}
             <button
                 style={styles.twoDButton}
                 onClick={(e) => {
-                    e.stopPropagation(); // جلوگیری از فعال شدن onClick اصلی کارت (3D)
+                    e.stopPropagation();
                     onSelect2D(lesson);
                 }}
             >
@@ -193,51 +185,52 @@ const LessonCard = ({ lesson, onSelect3D, onSelect2D }) => {
         </div>
     );
 }
-
-
 export default function App() {
   const [activeLesson, setActiveLesson] = useState(null);
   const [viewMode, setViewMode] = useState(null); // '3D' یا '2D'
-
-  // --- توابع دسترسی ---
   const handleSelectLesson = useCallback((lesson) => {
     setActiveLesson(lesson);
-    setViewMode(null); // ریست کردن حالت نما
+    setViewMode(null);
   }, []);
-
   const handleBack = useCallback(() => {
     setActiveLesson(null);
     setViewMode(null);
   }, []);
-
-  // --- مدیریت مسیرها ---
-
-  // مسیر 3D: انتخاب مستقیم از کارت (پیش‌فرض)
   const handleSelect3D = useCallback((lesson) => {
     setActiveLesson(lesson);
     setViewMode('3D');
   }, []);
-
-  // مسیر 2D: انتخاب از دکمه کوچک کنار کارت
   const handleSelect2D = useCallback((lesson) => {
     setActiveLesson(lesson);
     setViewMode('2D');
   }, []);
-
-
+  // --- مدیریت نمایش کامپوننت‌ها ---
+  
+  // حالت ۳‌بعدی
   if (activeLesson && viewMode === '3D') {
-    return <LessonRoom lesson={activeLesson} onBack={handleBack} />;
+    return (
+      <LessonRoom 
+        lesson={activeLesson} 
+        onBack={handleBack} 
+        on2D={() => handleSelect2D(activeLesson)} 
+      />
+    );
   }
-
+  // حالت ۲‌بعدی
   if (activeLesson && viewMode === '2D') {
-    return <ClassroomSplitTwoD lesson={activeLesson} onBack={handleBack} />;
+    return (
+      <ClassroomSplitTwoD 
+        lesson={activeLesson} 
+        onBack={handleBack} 
+        onSwitchTo3D={() => handleSelect3D(activeLesson)} 
+      />
+    );
   }
-
-  // صفحه اصلی: لیست دروس
+  // صفحه اصلی (لیست دروس)
   return (
     <div style={getStyles().container}>
       <h1 style={getStyles().header}>دانشگاه متاورس</h1>
-      <p style={getStyles().subHeader}>روی کارت کلیک کنید (پیش‌فرض 3D) یا دکمه 2D را بزنید.</p>
+      <p style={getStyles().subHeader}>روی کارت کلیک کنید (پیش‌فرض 3D) یا مربع را بزنید.</p>
       <div style={getStyles().scrollArea}>
         <div style={getStyles().grid}>
           {Object.keys(LESSONS_DATA).map((key) => {
