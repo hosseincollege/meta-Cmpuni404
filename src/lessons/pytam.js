@@ -1,535 +1,670 @@
 export default [
 
-  /* ============================================================
-     بخش ۱: جمع عناصر لیست
-  ============================================================ */
   {
-    section: "تمرین ۱: الگوریتم جمع (Summation)",
+    section: "سؤال 1: مجموع اعداد زوج",
     topics: [
       {
-        title: "۱. مفهوم متغیر انباشته (Accumulator)",
-        content: "قبل از شروع جمع، به یک ظرف خالی نیاز داریم. اگر این ظرف را نسازیم، اعداد لیست جایی برای جمع شدن ندارند.",
+        title: "صورت سؤال",
+        content: "برنامه‌ای بنویسید که یک لیست از اعداد صحیح می‌گیرد و مجموع تمام اعداد زوج را برمی‌گرداند.",
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "چرا صفر؟",
-            content: "متغیر `total = 0` مقداردهی اولیه می‌شود چون صفر در ریاضی تأثیری در جمع ندارد (عنصر خنثی)."
-          }
+          { title: "List", content: "لیست برای نگهداری چند عدد" },
+          { title: "for", content: "for برای پیمایش عناصر لیست" },
+          { title: "if", content: "if برای تشخیص زوج بودن" },
+          { title: "%", content: "باقی‌مانده صفر → عدد زوج" }
         ]
       },
       {
-        title: "۲. پیمایش لیست (Iteration)",
-        content: "ما نمی‌توانیم کل لیست را یکجا جمع کنیم. باید با یک حلقه `for`، اعداد را یکی‌یکی بیرون بکشیم و نام موقت `num` به آن‌ها بدهیم."
-      },
-      {
-        title: "۳. عملیات افزودن (Update)",
-        content: "در هر دور حلقه، مقدار فعلی `num` را به ظرف `total` اضافه می‌کنیم. دستور `total += num` کوتاه‌شده‌ی `total = total + num` است."
-      },
-      {
-        title: "۴. کد نهایی و خروجی",
-        content: "دقت کنید `return` باید هم‌تراز با `for` (بیرون حلقه) باشد تا بعد از تمام شدن کار، جواب نهایی را بدهد.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def sum_list(lst):\n  total = 0\n  for num in lst:\n    total += num\n  return total"
+            title: "code",
+            content: `nums = [1,2,3,4,5,6]
+sum_even = 0
+for n in nums:
+    if n % 2 == 0:
+        sum_even += n
+print(sum_even)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۲: شمارش اعداد زوج
-  ============================================================ */
   {
-    section: "تمرین ۲: شمارش شرطی (Counting)",
+    section: "سؤال 2: مضرب‌های n",
     topics: [
       {
-        title: "۱. تفاوت جمع و شمارش",
-        content: "در اینجا نمی‌خواهیم اعداد را با هم جمع کنیم، بلکه می‌خواهیم تعدادشان را بشماریم. پس متغیر `count` نقش یک کنتور را بازی می‌کند."
-      },
-      {
-        title: "۲. منطق ریاضی زوج بودن",
-        content: "چطور بفهمیم عددی زوج است؟ اگر آن را بر ۲ تقسیم کنیم و باقی‌مانده صفر شود. عملگر `%` در پایتون باقی‌مانده را حساب می‌کند.",
+        title: "صورت سؤال",
+        content: "لیستی از اعداد و یک عدد n بگیرد و فقط عناصر مضرب n را در لیست جدید برگرداند.",
+
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "شرط برنامه",
-            content: "عبارت `if num % 2 == 0` یعنی: اگر باقی‌مانده تقسیم `num` بر ۲ برابر با صفر بود."
-          }
+          { title: "List", content: "لیست ورودی و خروجی" },
+          { title: "for", content: "بررسی تک‌تک عناصر" },
+          { title: "if", content: "بررسی مضرب بودن" },
+          { title: "append", content: "اضافه کردن به لیست جدید" }
         ]
       },
       {
-        title: "۳. افزایش شمارنده",
-        content: "فقط زمانی که شرط `if` درست باشد، دستور `count += 1` اجرا می‌شود و یک واحد به کنتور اضافه می‌شود."
-      },
-      {
-        title: "۴. کد نهایی",
-        content: "تابع نهایتاً تعداد اعدادی که شرط را داشتند برمی‌گرداند.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def count_even_numbers(lst):\n  count = 0\n  for num in lst:\n    if num % 2 == 0:\n      count += 1\n  return count"
+            title: "code",
+            content: `nums = [1,2,3,4,5,6,10]
+n = 2
+result = []
+for x in nums:
+    if x % n == 0:
+        result.append(x)
+print(result)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۳: مینیمم و ماکسیمم
-  ============================================================ */
   {
-    section: "تمرین ۳: یافتن Min و Max",
+    section: "سؤال 3: بررسی صعودی بودن",
     topics: [
       {
-        title: "۱. مشکل مقداردهی اولیه",
-        content: "اگر `max` را صفر بگذاریم و تمام اعداد لیست منفی باشند (مثلاً -5 و -10)، برنامه به اشتباه صفر را به عنوان بزرگترین عدد چاپ می‌کند!",
+        title: "صورت سؤال",
+        content: "بررسی کند آیا عناصر لیست به‌صورت صعودی هستند یا خیر.",
+
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "راه‌حل حرفه‌ای",
-            content: "همیشه **اولین عضو لیست** (`lst[0]`) را به عنوان فرض اولیه برای مینیمم و ماکسیمم در نظر می‌گیریم."
-          }
+          { title: "range", content: "دسترسی به اندیس‌ها" },
+          { title: "for", content: "مقایسه عنصر با بعدی" },
+          { title: "if", content: "اگر ترتیب نقض شود False" }
         ]
       },
       {
-        title: "۲. منطق جستجو",
-        content: "حلقه شروع به چرخش می‌کند. هر عددی که می‌بینیم را با رکورد فعلی مقایسه می‌کنیم.",
+        title: "کد",
         subtopics: [
           {
-            title: "به‌روزرسانی رکورد",
-            content: "اگر `item > max` بود، یعنی رکورد جدیدی ثبت شده و `max` باید تغییر کند. همین منطق برای `min` هم هست."
-          }
-        ]
-      },
-      {
-        title: "۳. بازگرداندن چند مقدار",
-        content: "در پایتون می‌توانیم همزمان دو متغیر را `return` کنیم. این مقادیر به صورت یک تاپل (Tuple) برگردانده می‌شوند.",
-        subtopics: [
-          {
-            title: "کد پایتون",
-            content:
-              "def Find_Min_Max(lst):\n  max = lst[0]\n  min = lst[0]\n  for item in lst:\n    if item > max:\n      max = item\n    if item < min:\n      min = item\n  return min, max"
+            title: "code",
+            content: `nums = [1,2,3,4]
+is_sorted = True
+for i in range(len(nums)-1):
+    if nums[i] > nums[i+1]:
+        is_sorted = False
+print(is_sorted)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۴: فیلتر دیکشنری
-  ============================================================ */
   {
-    section: "تمرین ۴: فیلتر کردن دیکشنری",
+    section: "سؤال 4: رشته‌های طول بیشتر از ۵",
     topics: [
       {
-        title: "۱. ساختار دیکشنری",
-        content: "دیکشنری مجموعه‌ای از جفت‌های «کلید: مقدار» است. در اینجا نام‌ها کلید هستند و سن‌ها مقدار."
+        title: "صورت سؤال",
+        content: "رشته‌هایی که طول آن‌ها بیشتر از ۵ است را چاپ کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "List", content: "لیست رشته‌ها" },
+          { title: "for", content: "پیمایش رشته‌ها" },
+          { title: "len", content: "محاسبه طول رشته" }
+        ]
       },
       {
-        title: "۲. متد .items()",
-        content: "برای اینکه بتوانیم داخل دیکشنری بگردیم، باید آن را باز کنیم. متد `.items()` دیکشنری را به لیستی از جفت‌ها تبدیل می‌کند تا در حلقه قابل استفاده باشد."
-      },
-      {
-        title: "۳. تکنیک Unpacking",
-        content: "در خط `for name, age in ...` پایتون به صورت خودکار جفت اول را در متغیر `name` و جفت دوم را در `age` می‌ریزد."
-      },
-      {
-        title: "۴. کد نهایی",
-        content: "اگر سن بالای ۱۸ بود، نام فرد را به لیست خروجی اضافه می‌کنیم (`append`).",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def adults(people):\n  lst = []\n  for name, age in people.items():\n    if age > 18:\n      lst.append(name)\n  return lst"
+            title: "code",
+            content: `words = ["apple","hi","banana","cat"]
+for w in words:
+    if len(w) > 5:
+        print(w)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۵: تولید لیست با Range
-  ============================================================ */
   {
-    section: "تمرین ۵: تولید دنباله اعداد",
+    section: "سؤال 5: رد کردن مضرب ۵",
     topics: [
       {
-        title: "۱. هدف برنامه",
-        content: "می‌خواهیم یک تابع بسازیم که عدد `n` را بگیرد و لیستی شامل `[1, 2, ..., n]` تحویل دهد."
-      },
-      {
-        title: "۲. رفتار تابع Range",
-        content: "تابع `range(start, stop)` همیشه **یکی مانده به آخر** متوقف می‌شود. یعنی `range(1, 5)` اعداد ۱ تا ۴ را می‌دهد.",
+        title: "صورت سؤال",
+        content: "اعداد 1 تا 15 را چاپ کند ولی مضرب‌های 5 را نادیده بگیرد.",
+
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "اصلاح بازه",
-            content: "برای اینکه خود عدد `n` هم در لیست باشد، باید بازه را تا `n + 1` تعریف کنیم."
-          }
+          { title: "range", content: "تولید اعداد 1 تا 15" },
+          { title: "if", content: "تشخیص مضرب 5" },
+          { title: "continue", content: "رد کردن تکرار" }
         ]
       },
       {
-        title: "۳. پر کردن لیست",
-        content: "یک لیست خالی می‌سازیم و در هر دور حلقه، عدد تولید شده (`i`) را به لیست می‌چسبانیم.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def list_upto_n(n):\n  lst = []\n  for i in range(1, n + 1):\n    lst.append(i)\n  return lst"
+            title: "code",
+            content: `for i in range(1,16):
+    if i % 5 == 0:
+        continue
+    print(i)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۶: کار با کاراکترها
-  ============================================================ */
   {
-    section: "تمرین ۶: شمارش حروف کوچک",
+    section: "سؤال 6: توقف روی حرف a",
     topics: [
       {
-        title: "۱. رشته به عنوان لیست",
-        content: "در پایتون می‌توانیم روی یک متن (String) حلقه بزنیم. در این صورت حلقه تک‌تک حروف را به ما می‌دهد."
-      },
-      {
-        title: "۲. مقایسه کاراکترها",
-        content: "کامپیوتر حروف را به صورت عدد می‌بیند. حرف 'a' کدی دارد که از 'z' کوچکتر است. پس می‌توانیم از شرط‌های ریاضی استفاده کنیم.",
+        title: "صورت سؤال",
+        content: "اگر در رشته به حرف a رسید، حلقه را متوقف کند.",
+
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "شرط بازه",
-            content: "`'a' <= ch <= 'z'` یعنی: آیا کاراکتر `ch` دقیقاً بین حروف الفبای کوچک قرار دارد؟"
-          }
+          { title: "input", content: "گرفتن رشته از کاربر" },
+          { title: "for", content: "بررسی کاراکترها" },
+          { title: "if", content: "برخورد با a" },
+          { title: "break", content: "توقف حلقه" }
         ]
       },
       {
-        title: "۳. کد نهایی",
-        content: "شمارنده `count` فقط زمانی زیاد می‌شود که کاراکتر، حرف کوچک انگلیسی باشد.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def count_lowercase_chars(s):\n  count = 0\n  for ch in s:\n    if 'a' <= ch <= 'z':\n      count += 1\n  return count"
+            title: "code",
+            content: `s = input()
+for ch in s:
+    if ch == 'a':
+        print('found a')
+        break
+    print(ch)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۷: حلقه While و ورودی
-  ============================================================ */
   {
-    section: "تمرین ۷: حلقه بی‌نهایت و شرط توقف",
+    section: "سؤال 7: شمارش حروف",
     topics: [
       {
-        title: "۱. چرا While True؟",
-        content: "زمانی که نمی‌دانیم کاربر چند بار می‌خواهد عدد وارد کند، از حلقه `while True` (حلقه بی‌نهایت) استفاده می‌کنیم."
+        title: "صورت سؤال",
+        content: "تعداد هر حرف غیر فاصله را در رشته بشمارد.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "dict", content: "کلید=حرف مقدار=تعداد" },
+          { title: "for", content: "پیمایش رشته" },
+          { title: "if", content: "نادیده گرفتن فاصله" }
+        ]
       },
       {
-        title: "۲. دریافت ورودی",
-        content: "تابع `input` همیشه مقدار را به صورت رشته (String) می‌گیرد. حتماً باید با `int()` آن را به عدد تبدیل کنیم تا قابل محاسبه باشد."
-      },
-      {
-        title: "۳. دستور Break",
-        content: "این تنها راه فرار از حلقه بی‌نهایت است. شرط می‌گذاریم: «اگر عدد وارد شده ۰ بود، `break` کن» (یعنی بپر بیرون)."
-      },
-      {
-        title: "۴. کد نهایی",
-        content: "محاسبات محیط و مساحت فقط زمانی انجام می‌شود که `break` اجرا نشده باشد.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "while True:\n  num = int(input('enter number:'))\n  if num == 0:\n    break\n  # Call functions here..."
+            title: "code",
+            content: `s = "hi hello"
+count = {}
+for ch in s:
+    if ch != ' ':
+        count[ch] = count.get(ch,0) + 1
+print(count)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۸: خروجی چندگانه (Tuple)
-  ============================================================ */
   {
-    section: "تمرین ۸: بازگشت چند مقدار (Tuple)",
+    section: "سؤال 8: وجود حرف صدادار",
     topics: [
       {
-        title: "۱. محاسبه همزمان",
-        content: "در این تمرین تابع هم مساحت را حساب می‌کند و هم محیط را. نیازی نیست دو تابع جدا بنویسیم."
+        title: "صورت سؤال",
+        content: "اگر رشته حداقل یک حرف صدادار داشته باشد True برگرداند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "for", content: "بررسی حروف" },
+          { title: "in", content: "بررسی عضویت در aeiou" },
+          { title: "return", content: "برگشت نتیجه" }
+        ]
       },
       {
-        title: "۲. ساختار Return",
-        content: "وقتی می‌نویسیم `return area, perimeter`، پایتون این دو عدد را در یک بسته به نام «تاپل» می‌گذارد و برمی‌گرداند."
-      },
-      {
-        title: "۳. باز کردن بسته (Unpacking)",
-        content: "در زمان فراخوانی، می‌توانیم بنویسیم: `a, p = func()`. مقدار اول تاپل در `a` و مقدار دوم در `p` ذخیره می‌شود.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Area_Perimeter(length, width):\n  area = length * width\n  perimeter = 2 * (length + width)\n  return area, perimeter"
+            title: "code",
+            content: `def has_vowel(s):
+    for ch in s:
+        if ch in "aeiou":
+            return True
+    return False`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۹: منطق یکتایی (Unique)
-  ============================================================ */
   {
-    section: "تمرین ۹: کاراکترهای منحصر به فرد",
+    section: "سؤال 9: بلندترین کلمه",
     topics: [
       {
-        title: "۱. هدف الگوریتم",
-        content: "می‌خواهیم تعداد حروف را بشماریم، اما تکراری‌ها را حذف کنیم. مثلاً در 'Apple'، حرف 'p' باید فقط یک بار شمرده شود."
-      },
-      {
-        title: "۲. لیست کمکی",
-        content: "یک لیست خالی (`lst`) می‌سازیم تا حروفی که قبلاً دیده‌ایم را در آن یادداشت کنیم."
-      },
-      {
-        title: "۳. عملگر عضویت (Not In)",
-        content: "مهم‌ترین بخش کد: `if ch not in lst`. این شرط می‌گوید: «فقط اگر این حرف را قبلاً در لیست یادداشت نکرده‌ای، ادامه بده».",
+        title: "صورت سؤال",
+        content: "بلندترین کلمه در لیست را چاپ کند.",
+
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "اضافه کردن",
-            content: "اگر شرط برقرار بود، هم به شمارنده اضافه می‌کنیم و هم حرف را به لیست `lst` اضافه می‌کنیم تا دفعه بعد جلویش گرفته شود."
-          }
+          { title: "List", content: "لیست رشته‌ها" },
+          { title: "for", content: "پیمایش کلمات" },
+          { title: "len", content: "مقایسه طول" }
         ]
       },
       {
-        title: "۴. کد پایتون",
-        content:
-          "def count_unique_chars(s):\n  lst = []\n  count = 0\n  for ch in s:\n    if ch not in lst:\n      count += 1\n      lst.append(ch)\n  return count"
-      }
-    ]
-  },
-
-  /* ============================================================
-     بخش ۱۰: متد Split
-  ============================================================ */
-  {
-    section: "تمرین ۱۰: شمارش کلمات جمله",
-    topics: [
-      {
-        title: "۱. تشخیص کلمه",
-        content: "برای کامپیوتر، جمله فقط یک رشته طولانی است. برای فهمیدن کلمات، باید جاهایی که فاصله (Space) وجود دارد را پیدا کنیم."
-      },
-      {
-        title: "۲. متد .split()",
-        content: "این متد رشته را از محل فاصله‌ها برش می‌زند و تبدیل به یک «لیست» از کلمات می‌کند. مثلا 'Hi Ali' می‌شود `['Hi', 'Ali']`."
-      },
-      {
-        title: "۳. شمارش لیست",
-        content: "حالا کافیست طول این لیست را با `len()` بگیریم تا تعداد کلمات مشخص شود.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Count_Words(sentence):\n  words = sentence.split()\n  return len(words)"
+            title: "code",
+            content: `words = ["hi","banana","apple"]
+longest = words[0]
+for w in words:
+    if len(w) > len(longest):
+        longest = w
+print(longest)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۱۱: حذف کلمات تکراری
-  ============================================================ */
   {
-    section: "تمرین ۱۱: نرمال‌سازی متن (Remove Duplicates)",
+    section: "سؤال 10: محاسبه معدل دیکشنری",
     topics: [
       {
-        title: "۱. ترکیب مفاهیم",
-        content: "این تمرین ترکیب تمرین ۹ (یکتایی) و ۱۰ (split) است. اول جمله را به کلمات تبدیل می‌کنیم."
-      },
-      {
-        title: "۲. فیلتر کردن",
-        content: "با یک حلقه روی کلمات می‌چرخیم و با شرط `if word not in unique_words`، تکراری‌ها را دور می‌ریزیم."
-      },
-      {
-        title: "۳. بازسازی متن (Join)",
-        content: "ما الان یک لیست داریم، اما خروجی باید یک جمله (رشته) باشد. باید کلمات لیست را دوباره به هم بچسبانیم.",
+        title: "صورت سؤال",
+        content: "دیکشنری نمرات را گرفته و معدل را حساب کند.",
+
+        title: "منطق حل",
         subtopics: [
-          {
-            title: "روش دستی",
-            content: "در این کد از روش دستی استفاده شده: یک متغیر رشته‌ای خالی که کلمات به آن `+` می‌شوند."
-          }
+          { title: "dict", content: "نمرات" },
+          { title: "values()", content: "دریافت نمرات" },
+          { title: "len", content: "تعداد دروس" }
         ]
       },
       {
-        title: "۴. کد پایتون",
-        content:
-          "def Remove_Duplicate_Words(text):\n  words = text.split()\n  unique = []\n  for w in words:\n    if w not in unique:\n      unique.append(w)\n  return ' '.join(unique)"
-      }
-    ]
-  },
-
-  /* ============================================================
-     بخش ۱۲: دستور Continue
-  ============================================================ */
-  {
-    section: "تمرین ۱۲: نادیده گرفتن مقادیر (Continue)",
-    topics: [
-      {
-        title: "۱. کاربرد Continue",
-        content: "گاهی می‌خواهیم حلقه قطع نشود، بلکه فقط از روی یک مورد خاص «بپرد». دستور `continue` اجرای جاری را نیمه‌کاره ول می‌کند و به دور بعدی حلقه می‌رود."
-      },
-      {
-        title: "۲. شرط پرش",
-        content: "در این تمرین، شرط `if num == 2: continue` باعث می‌شود هر وقت به عدد ۲ رسیدیم، خط‌های بعدی (چاپ کردن) اجرا نشوند."
-      },
-      {
-        title: "۳. ترتیب کدنویسی",
-        content: "بسیار مهم است که شرط `continue` **قبل** از عملیات اصلی (چاپ) باشد. اگر بعد از چاپ باشد، بی‌تاثیر است.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Print_Even_Ignore_2(lst):\n  for num in lst:\n    if num == 2:\n      continue\n    if num % 2 == 0:\n      print(num)"
+            title: "code",
+            content: `scores = {"math":18,"phy":16,"cs":20}
+avg = sum(scores.values()) / len(scores)
+print(avg)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۱۳: جمع مثبت‌ها
-  ============================================================ */
   {
-    section: "تمرین ۱۳: جمع شرطی (Conditional Sum)",
+    section: "سؤال 11: میانگین با *args",
     topics: [
       {
-        title: "۱. الگوریتم کلی",
-        content: "این الگوریتم شبیه تمرین ۱ است، با این تفاوت که همه اعداد اجازه ورود به ظرف `total` را ندارند."
+        title: "صورت سؤال",
+        content: "تابع calculate_average که هر تعداد عدد بگیرد و میانگین را حساب کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "*args", content: "دریافت چند عدد" },
+          { title: "sum", content: "جمع اعداد" },
+          { title: "len", content: "تعداد اعداد" }
+        ]
       },
       {
-        title: "۲. فیلتر ورودی",
-        content: "شرط `if num > 0` مانند یک نگهبان عمل می‌کند. اعداد منفی یا صفر پشت این شرط می‌مانند و به خط `total += num` نمی‌رسند."
-      },
-      {
-        title: "۳. خروجی تابع",
-        content: "مقدار `total` نهایتاً شامل مجموع اعدادی است که از سد شرط عبور کرده‌اند.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Sum_Positive(lst):\n  total = 0\n  for num in lst:\n    if num > 0:\n      total += num\n  return total"
+            title: "code",
+            content: `def calculate_average(*args):
+    return sum(args) / len(args)
+print(calculate_average(10,20,30))`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۱۴: دستور Break
-  ============================================================ */
   {
-    section: "تمرین ۱۴: جستجوی خطی و توقف (Break)",
+    section: "سؤال 12: مساحت و محیط دایره",
     topics: [
       {
-        title: "۱. جستجوی خطی",
-        content: "یعنی چک کردن دانه‌دانه عناصر لیست از اول تا آخر. این ساده‌ترین روش جستجو است."
+        title: "صورت سؤال",
+        content: "تابعی که مساحت و محیط دایره را با گرفتن شعاع از input حساب کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "input", content: "گرفتن شعاع" },
+          { title: "math.pi", content: "عدد پی" },
+          { title: "function", content: "محاسبه" }
+        ]
       },
       {
-        title: "۲. بهینه‌سازی با Break",
-        content: "اگر چیزی که دنبالش هستیم (عدد ۷) را پیدا کردیم، دیگر نیازی نیست بقیه لیست را بگردیم. دستور `break` بلافاصله حلقه را متوقف می‌کند."
-      },
-      {
-        title: "۳. تفاوت با Continue",
-        content: "`continue` یک دور را رد می‌کند ولی `break` کل عملیات حلقه را برای همیشه تمام می‌کند.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Find_Seven(lst):\n  for num in lst:\n    if num == 7:\n      print('Found!')\n      break"
+            title: "code",
+            content: `import math
+r = float(input())
+area = math.pi * r * r
+perimeter = 2 * math.pi * r
+print(area, perimeter)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۱۵: طول رشته (Len)
-  ============================================================ */
   {
-    section: "تمرین ۱۵: فیلتر بر اساس طول",
+    section: "سؤال 13: تعداد عناصر لیست",
     topics: [
       {
-        title: "۱. تابع len()",
-        content: "این تابع همه‌کاره است. اگر لیست بدهید، تعداد اعضا را می‌دهد. اگر رشته (String) بدهید، تعداد حروف را می‌دهد."
+        title: "صورت سؤال",
+        content: "تابعی که تعداد عناصر لیست را چاپ کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "List", content: "لیست ورودی" },
+          { title: "len", content: "شمارش عناصر" }
+        ]
       },
       {
-        title: "۲. منطق شرط",
-        content: "شرط `len(s) >= 4` بررسی می‌کند که آیا کلمه حداقل ۴ حرف دارد یا نه."
-      },
-      {
-        title: "۳. ساخت لیست جدید",
-        content: "کلماتی که شرط را پاس کنند، با متد `append` به لیست `result` اضافه می‌شوند.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Filter_Long_Strings(lst):\n  result = []\n  for s in lst:\n    if len(s) >= 4:\n      result.append(s)\n  return result"
+            title: "code",
+            content: `nums = [1,2,3,4]
+print(len(nums))`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۱۶: شمارش تکرار (Frequency)
-  ============================================================ */
   {
-    section: "تمرین ۱۶: شمارش تکرار با دیکشنری",
+    section: "سؤال 14: ادغام یک‌درمیان دو لیست",
     topics: [
       {
-        title: "۱. انتخاب ساختار داده",
-        content: "چون می‌خواهیم «نام» را به «تعداد» ربط دهیم، لیست به کارمان نمی‌آید. دیکشنری بهترین گزینه است (کلید=نام، مقدار=تعداد)."
+        title: "صورت سؤال",
+        content: "عناصر دو لیست را به صورت یکی در میان ادغام کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "for", content: "پیمایش با اندیس" },
+          { title: "append", content: "اضافه به لیست جدید" }
+        ]
       },
       {
-        title: "۲. منطق دیدار اول (If)",
-        content: "وقتی به اسمی می‌رسیم، اگر در دیکشنری نبود (`not in`)، یعنی بار اول است که دیده شده. پس آن را با مقدار ۱ ذخیره می‌کنیم."
-      },
-      {
-        title: "۳. منطق دیدار بعدی (Else)",
-        content: "اگر اسم در دیکشنری بود، یعنی قبلاً دیده شده. پس مقدار قبلی‌اش را می‌خوانیم و یکی به آن اضافه می‌کنیم (`+= 1`).",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Count_Name_Occurrences(names):\n  counts = {}\n  for name in names:\n    if name not in counts:\n      counts[name] = 1\n    else:\n      counts[name] += 1\n  return counts"
+            title: "code",
+            content: `a = [1,2,3]
+b = ['a','b','c']
+result = []
+for i in range(len(a)):
+    result.append(a[i])
+    result.append(b[i])
+print(result)`
           }
         ]
       }
     ]
   },
 
-  /* ============================================================
-     بخش ۱۷: میانگین دیکشنری
-  ============================================================ */
   {
-    section: "تمرین ۱۷: معدل‌گیری از دیکشنری",
+    section: "سؤال 15: کلاس BankAccount",
     topics: [
       {
-        title: "۱. استخراج مقادیر",
-        content: "ما برای معدل فقط به نمرات نیاز داریم، نه نام دانش‌آموزان. متد `.values()` لیست نمرات را از دیکشنری بیرون می‌کشد."
+        title: "صورت سؤال",
+        content: "کلاس BankAccount با balance و متدهای deposit، withdraw و نمایش موجودی.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "class", content: "تعریف کلاس" },
+          { title: "__init__", content: "موجودی اولیه" },
+          { title: "method", content: "deposit / withdraw" }
+        ]
       },
       {
-        title: "۲. جمع‌بندی",
-        content: "با یک حلقه روی `values()`، تمام نمرات را در متغیر `sum_grades` جمع می‌کنیم."
-      },
-      {
-        title: "۳. محاسبه معدل",
-        content: "معدل یعنی (جمع کل) تقسیم بر (تعداد کل). تعداد کل را با `len(grades_dict)` به دست می‌آوریم.",
+        title: "کد",
         subtopics: [
           {
-            title: "کد پایتون",
-            content:
-              "def Average_Grade(grades_dict):\n  sum_grades = 0\n  for grade in grades_dict.values():\n    sum_grades += grade\n  return sum_grades / len(grades_dict)"
+            title: "code",
+            content: `class BankAccount:
+    def __init__(self,balance):
+        self.balance = balance
+    def deposit(self,amount):
+        self.balance += amount
+    def withdraw(self,amount):
+        self.balance -= amount
+    def show(self):
+        print(self.balance)`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 16: کلاس Rectangle",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "کلاس Rectangle با متد area و perimeter.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "class", content: "تعریف کلاس" },
+          { title: "method", content: "area و perimeter" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `class Rectangle:
+    def __init__(self,w,h):
+        self.w = w
+        self.h = h
+    def area(self):
+        return self.w * self.h
+    def perimeter(self):
+        return 2*(self.w+self.h)`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 17: کلاس StudentRecord",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "نگهداری نام، شماره دانشجویی و نمرات و محاسبه معدل.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "class", content: "اطلاعات دانشجو" },
+          { title: "list", content: "نمرات" },
+          { title: "average", content: "محاسبه معدل" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `class StudentRecord:
+    def __init__(self,name,id,grades):
+        self.name = name
+        self.id = id
+        self.grades = grades
+    def average(self):
+        return sum(self.grades)/len(self.grades)`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 18: کلاس Point2D",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "محاسبه فاصله نقطه دوبعدی از مبدأ.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "math.sqrt", content: "محاسبه فاصله" },
+          { title: "x,y", content: "مختصات" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `import math
+class Point2D:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def distance_from_origin(self):
+        print(math.sqrt(self.x**2 + self.y**2))`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 19: شمارش مثبت منفی صفر",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "تعداد اعداد مثبت، منفی و صفر را بشمارد.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "for", content: "پیمایش اعداد" },
+          { title: "if/elif", content: "تشخیص نوع عدد" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `nums = [-1,0,2,3]
+pos = neg = zero = 0
+for n in nums:
+    if n > 0: pos += 1
+    elif n < 0: neg += 1
+    else: zero += 1
+print(pos,neg,zero)`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 20: اولین عدد زوج",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "اولین عدد زوج را پیدا کرده و حلقه را متوقف کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "for", content: "پیمایش لیست" },
+          { title: "break", content: "توقف بعد از یافتن" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `nums = [1,3,5,8,9]
+found = False
+for n in nums:
+    if n % 2 == 0:
+        print(n)
+        found = True
+        break
+if not found:
+    print("عدد زوجی وجود ندارد")`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 21: مجموع مربعات",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "مجموع مربعات عناصر لیست را چاپ کند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "for", content: "پیمایش" },
+          { title: "**", content: "توان دوم" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `nums = [1,2,3]
+total = 0
+for n in nums:
+    total += n*n
+print(total)`
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    section: "سؤال 22: طول رشته‌ها",
+    topics: [
+      {
+        title: "صورت سؤال",
+        content: "طول هر رشته را در یک لیست جدید برگرداند.",
+
+        title: "منطق حل",
+        subtopics: [
+          { title: "List", content: "لیست جدید" },
+          { title: "len", content: "طول رشته" }
+        ]
+      },
+      {
+        title: "کد",
+        subtopics: [
+          {
+            title: "code",
+            content: `words = ["hi","apple","banana"]
+lengths = []
+for w in words:
+    lengths.append(len(w))
+print(lengths)`
           }
         ]
       }
