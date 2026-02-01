@@ -5,19 +5,23 @@ import React, {
     useRef,
 } from "react";
 
-const styles = {
+// ==========================================
+// ✅ تابع تولید استایل‌ها بر اساس تم
+// ==========================================
+const getThemeStyles = (isDark) => ({
     mainContainer: {
         width: "100vw",
         height: "100vh",
-        backgroundColor: "#080808",
+        backgroundColor: isDark ? "#080808" : "#f8fafc", // تیره یا روشن
         display: "flex",
         flexDirection: "column",
-        color: "white",
+        color: isDark ? "white" : "#0f172a",
         direction: "rtl",
         fontFamily: "sans-serif",
-        position: "relative", // برای قرارگیری صحیح نوار ابزار
+        position: "relative",
+        transition: "background-color 0.3s ease, color 0.3s ease",
     },
-    // --- استایل‌های نوار ابزار (مشابه LessonRoom) ---
+    // --- استایل‌های نوار ابزار ---
     topToolbar: {
         position: "absolute",
         top: 4,
@@ -26,36 +30,42 @@ const styles = {
         display: "flex",
         alignItems: "center",
         gap: "8px",
-        background: "rgba(20,20,20,0.85)", // کمی تیره‌تر برای خوانایی روی متن
+        background: isDark ? "rgba(20,20,20,0.85)" : "rgba(255,255,255,0.85)",
         backdropFilter: "blur(8px)",
         borderRadius: "8px",
         padding: "6px 10px",
-        border: "1px solid rgba(255,255,255,0.12)",
-        color: "white",
+        border: isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(0,0,0,0.1)",
+        color: isDark ? "white" : "#1e293b",
+        boxShadow: isDark ? "none" : "0 2px 10px rgba(0,0,0,0.05)",
+        transition: "all 0.3s ease",
     },
-    iconButtonStyle: (isActive, color = "white") => ({
-        background: "transparent",
-        border: "none",
-        cursor: "pointer",
-        color: isActive ? color : "#64748b",
-        padding: "4px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "color 0.2s ease",
-    }),
+    // تابع داخلی برای دکمه‌های آیکونی
+    iconButtonStyle: (isActive, activeColor = "white") => {
+        const inactiveColor = isDark ? "#64748b" : "#94a3b8"; 
+        return {
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            color: isActive ? activeColor : inactiveColor,
+            padding: "4px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "color 0.2s ease",
+        };
+    },
     // --- استایل‌های اصلی صفحه ---
     headerSpacer: {
-        height: "60px", // فضای خالی برای اینکه نوار ابزار روی هدر اصلی نیفتد
+        height: "60px",
         width: "100%",
     },
     topBar: {
         display: "flex",
         alignItems: "center",
         padding: "10px 16px",
-        backgroundColor: "#171717",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.4)",
-        borderBottom: "1px solid #333",
+        backgroundColor: isDark ? "#171717" : "#ffffff",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        borderBottom: isDark ? "1px solid #333" : "1px solid #e2e8f0",
     },
     backButton: {
         background: "#3b82f6",
@@ -74,35 +84,38 @@ const styles = {
     chapterNavPanel: {
         width: "280px",
         minWidth: "280px",
-        backgroundColor: "#0f0f0f",
+        backgroundColor: isDark ? "#0f0f0f" : "#ffffff",
         padding: "12px 10px",
         overflowY: "auto",
-        borderLeft: "1px solid #262626",
+        borderLeft: isDark ? "1px solid #262626" : "1px solid #e2e8f0",
         display: "flex",
         flexDirection: "column",
         gap: "6px",
+        transition: "background-color 0.3s ease",
     },
     topicListPanel: {
         width: "260px",
         minWidth: "260px",
-        backgroundColor: "#131313",
+        backgroundColor: isDark ? "#131313" : "#f1f5f9",
         padding: "12px 10px",
         overflowY: "auto",
-        borderLeft: "1px solid #262626",
+        borderLeft: isDark ? "1px solid #262626" : "1px solid #e2e8f0",
         display: "flex",
         flexDirection: "column",
         gap: "8px",
+        transition: "background-color 0.3s ease",
     },
     contentPanelArea: {
         flex: 1,
         padding: "14px 18px",
         overflowY: "auto",
+        backgroundColor: isDark ? "transparent" : "#ffffff",
     },
     chapterButtonVertical: {
         padding: "8px 10px",
         borderRight: "3px solid",
         background: "transparent",
-        color: "#9ca3af",
+        color: isDark ? "#9ca3af" : "#64748b",
         cursor: "pointer",
         transition: "0.2s",
         whiteSpace: "nowrap",
@@ -121,7 +134,7 @@ const styles = {
         fontSize: "1.3rem",
         margin: "0 0 10px 0",
         paddingBottom: "6px",
-        borderBottom: "2px solid #334155",
+        borderBottom: isDark ? "2px solid #334155" : "2px solid #cbd5e1",
     },
     topicItem: {
         padding: "8px 10px",
@@ -130,6 +143,7 @@ const styles = {
         transition: "0.2s",
         lineHeight: "1.8",
         fontSize: "1.05rem",
+        color: isDark ? "white" : "#334155",
     },
     topicTitle: {
         fontSize: "1.05rem",
@@ -143,38 +157,46 @@ const styles = {
         alignItems: "center",
         paddingBottom: "10px",
         marginBottom: "14px",
-        borderBottom: "1px dashed #334155",
+        borderBottom: isDark ? "1px dashed #334155" : "1px dashed #cbd5e1",
     },
     subtopicsContainer: {
         marginTop: "18px",
         padding: "12px",
-        backgroundColor: "#1e1e1e",
+        backgroundColor: isDark ? "#1e1e1e" : "#f8fafc",
         borderRadius: "10px",
         display: "flex",
         flexDirection: "column",
         gap: "14px",
+        border: isDark ? "none" : "1px solid #e2e8f0",
     },
     subtopicDetailItem: {
         padding: "10px 12px",
-        borderRight: "3px solid #374151",
-        backgroundColor: "#171717",
+        borderRight: isDark ? "3px solid #374151" : "3px solid #cbd5e1",
+        backgroundColor: isDark ? "#171717" : "#ffffff",
         borderRadius: "8px",
+        border: isDark ? "none" : "1px solid #f1f5f9",
     },
     subtopicTitleStyle: {
         margin: "0 0 8px 0",
         paddingBottom: "6px",
-        borderBottom: "1px dashed #3f3f46",
+        borderBottom: isDark ? "1px dashed #3f3f46" : "1px dashed #e2e8f0",
         fontSize: "1.15rem",
         fontWeight: "bold",
-        color: "#d1d5db",
+        color: isDark ? "#d1d5db" : "#475569",
         lineHeight: "1.6",
     },
-};
+});
 
-export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
+export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D, theme = "dark" }) {
+    // 1. بررسی تم
+    const isDark = theme === "dark";
+    
+    // 2. تولید استایل‌ها
+    const styles = useMemo(() => getThemeStyles(isDark), [isDark]);
+
     if (!lesson || !lesson.chapters || lesson.chapters.length === 0) {
         return (
-            <div style={{ backgroundColor: "#080808", color: "white" }}>
+            <div style={{ backgroundColor: isDark ? "#080808" : "#fff", color: isDark ? "white" : "black" }}>
                 محتوای درس یافت نشد.
             </div>
         );
@@ -182,7 +204,8 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
 
     const chapters = lesson.chapters;
     const chapterColor = lesson.color || "#38bdf8";
-    const secondaryColor = "#f59e0b";
+    // در تم روشن، اگر رنگ درس خیلی روشن بود، باید کمی تیره‌تر شود، اما اینجا همان را استفاده می‌کنیم
+    const secondaryColor = "#f59e0b"; // زرد/نارنجی
     const topicListRef = useRef(null);
     
     const [activeChapterId, setActiveChapterId] = useState(chapters[0].id);
@@ -208,7 +231,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
     return (
         <div style={styles.mainContainer}>
             
-            {/* --- نوار ابزار شناور (مشابه LessonRoom) --- */}
+            {/* --- نوار ابزار شناور --- */}
             <div style={styles.topToolbar}>
 
                 {/* دکمه: رفتن به صفحه 3D */}
@@ -224,7 +247,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                 </button>
 
                 {/* جداکننده عمودی */}
-                <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.2)", margin: "0 4px" }} />
+                <div style={{ width: 1, height: 20, background: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)", margin: "0 4px" }} />
 
                 {/* عنوان درس */}
                 <h3
@@ -232,7 +255,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                         margin: "0 4px",
                         fontSize: "1.1rem",
                         fontWeight: "700",
-                        color: "#e2e8f0",
+                        color: isDark ? "#e2e8f0" : "#334155",
                         whiteSpace: "nowrap",
                         padding: 0,
                     }}
@@ -241,9 +264,9 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                 </h3>
 
                 {/* جداکننده عمودی */}
-                <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.2)", margin: "0 4px" }} />
+                <div style={{ width: 1, height: 20, background: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)", margin: "0 4px" }} />
 
-                {/* آیکون‌های انتخاب حالت (فقط نمایشی در 2D) */}
+                {/* آیکون‌های انتخاب حالت */}
                 <div style={{ display: "flex", gap: "4px", marginLeft: "auto" }}>
 
                     {/* دکمه: خروج */}
@@ -262,7 +285,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                 </div>
             </div>
 
-            {/* فضای خالی برای جلوگیری از همپوشانی */}
+            {/* فضای خالی */}
             <div style={styles.headerSpacer}></div>
 
 
@@ -274,7 +297,9 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                         style={{
                             ...styles.topicHeader,
                             color: chapterColor,
-                            borderBottom: `2px solid ${chapterColor}`,
+                            borderBottom: isDark 
+                                ? `2px solid ${chapterColor}` 
+                                : `2px solid ${chapterColor}`, // مشابه
                         }}
                     >
                         فصل‌ها
@@ -287,15 +312,16 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                                 borderColor:
                                     activeChapterId === ch.id
                                         ? chapterColor
-                                        : "#374151",
+                                        : (isDark ? "#374151" : "#e2e8f0"),
                                 backgroundColor:
                                     activeChapterId === ch.id
-                                        ? "rgba(55,65,81,0.6)"
+                                        ? (isDark ? "rgba(55,65,81,0.6)" : "rgba(59, 130, 246, 0.1)")
                                         : "transparent",
                                 color:
                                     activeChapterId === ch.id
-                                        ? "white"
-                                        : "#9ca3af",
+                                        ? (isDark ? "white" : "#0f172a")
+                                        : (isDark ? "#9ca3af" : "#64748b"),
+                                fontWeight: activeChapterId === ch.id ? "bold" : "normal",
                             }}
                             onClick={() => handleChapterChange(ch.id)}
                             title={ch.title}
@@ -325,12 +351,20 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                                     ...styles.topicItem,
                                     backgroundColor:
                                         activeTopic?.id === t.id
-                                            ? "rgba(55,65,81,0.4)"
+                                            ? (isDark ? "rgba(55,65,81,0.4)" : "rgba(255,255,255,1)")
                                             : "transparent",
+                                    border: 
+                                        activeTopic?.id === t.id
+                                            ? (isDark ? "none" : "1px solid #e2e8f0")
+                                            : "1px solid transparent",
                                     borderRight:
                                         activeTopic?.id === t.id
                                             ? `3px solid ${chapterColor}`
-                                            : "none",
+                                            : "3px solid transparent",
+                                    boxShadow: 
+                                        (!isDark && activeTopic?.id === t.id) 
+                                        ? "0 1px 3px rgba(0,0,0,0.05)" 
+                                        : "none"
                                 }}
                                 onClick={() => setActiveTopic(t)}
                             >
@@ -370,7 +404,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                                     margin: "0 0 16px 0",
                                     fontSize: "1.2rem",
                                     lineHeight: "1.9",
-                                    color: "#e5e7eb",
+                                    color: isDark ? "#e5e7eb" : "#334155",
                                 }}
                             >
                                 {activeTopic.content}
@@ -385,7 +419,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                                             <h5
                                                 style={{
                                                     ...styles.subtopicTitleStyle,
-                                                    color: secondaryColor,
+                                                    color: secondaryColor, // رنگ ثابت برای عنوان زیرمجموعه
                                                 }}
                                             >
                                                 {i + 1}. {sub.title}
@@ -395,7 +429,7 @@ export default function ClassroomSplitTwoD({ lesson, onBack, onSwitchTo3D }) {
                                                     margin: 0,
                                                     fontSize: "1.1rem",
                                                     lineHeight: "1.85",
-                                                    color: "#cbd5e1",
+                                                    color: isDark ? "#cbd5e1" : "#475569",
                                                 }}
                                             >
                                                 {sub.content}
